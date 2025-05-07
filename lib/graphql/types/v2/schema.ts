@@ -6213,6 +6213,7 @@ export type HostOffPlatformTransactionsArgs = {
   importType?: InputMaybe<Array<TransactionsImportType>>;
   limit?: Scalars['Int']['input'];
   offset?: Scalars['Int']['input'];
+  orderBy?: TransactionsImportRowOrderInput;
   searchTerm?: InputMaybe<Scalars['String']['input']>;
   status?: InputMaybe<TransactionsImportRowStatus>;
 };
@@ -12107,6 +12108,18 @@ export type TransactionsImportRowCreateInput = {
   /** The source id of the row */
   sourceId: Scalars['NonEmptyString']['input'];
 };
+
+/** Input to order off platform transactions chronologically */
+export type TransactionsImportRowOrderInput = {
+  /** Ordering direction. */
+  direction?: OrderDirection;
+  /** Field to order by */
+  field?: TransactionsImportRowOrderInputField;
+};
+
+export enum TransactionsImportRowOrderInputField {
+  DATE = 'DATE'
+}
 
 export type TransactionsImportRowReferenceInput = {
   /** The id of the row */

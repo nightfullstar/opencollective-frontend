@@ -4223,6 +4223,11 @@ type Host implements Account & AccountWithContributions {
     Filter rows by import type
     """
     importType: [TransactionsImportType!]
+
+    """
+    The order of results
+    """
+    orderBy: TransactionsImportRowOrderInput! = { field: DATE, direction: DESC }
   ): TransactionsImportRowCollection!
 
   """
@@ -7582,6 +7587,25 @@ enum TransactionsImportStatus {
   The import is disconnected / archived
   """
   DISCONNECTED
+}
+
+"""
+Input to order off platform transactions chronologically
+"""
+input TransactionsImportRowOrderInput {
+  """
+  Field to order by
+  """
+  field: TransactionsImportRowOrderInputField! = DATE
+
+  """
+  Ordering direction.
+  """
+  direction: OrderDirection! = DESC
+}
+
+enum TransactionsImportRowOrderInputField {
+  DATE
 }
 
 enum AccountingCategoryAppliesTo {
